@@ -9,6 +9,7 @@
 , wine
 , wineFlags ? ""
 , pname ? "rufzxp"
+, stateLocation ? "$HOME/.rufzxp/state"
 , location ? "$HOME/.rufzxp"
 , tricks ? [ "dotnet20" ]
 }:
@@ -42,7 +43,8 @@ let
       xvfb-run sh -c 'wine ${src} /silent'
       wineserver -k
     fi
-    wine start /d /tmp/rufzxp ${wineFlags} /unix "$RUFZXP" "$@"
+    mkdir ${stateLocation}
+    wine start /d "${stateLocation}" ${wineFlags} /unix "$RUFZXP" "$@"
     wineserver -w
   '';
 
