@@ -32,7 +32,7 @@ let
   script = writeShellScriptBin pname ''
     export WINEARCH="win32"
     export WINEPREFIX="${location}"
-    PATH=$PATH:${wine}/bin:${winetricks}/bin:${xvfb-run}/bin
+    PATH=${wine}/bin:${winetricks}/bin:${xvfb-run}/bin:$PATH
     USER="$(whoami)"
     RUFZXP="$WINEPREFIX/drive_c/Program Files/RufzXP/RufzXP.exe"
     if [ ! -d "$WINEPREFIX" ]; then
