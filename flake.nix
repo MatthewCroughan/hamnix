@@ -19,12 +19,13 @@
       # A Nixpkgs overlay.
       overlay = final: prev: {
         rufzxp = prev.callPackage ./pkgs/rufzxp {};
+        walls = prev.callPackage ./pkgs/walls {};
       };
 
       # Provide some binary packages for selected system types.
       packages = forAllSystems (system:
         {
-          inherit (nixpkgsFor.${system}) rufzxp;
+          inherit (nixpkgsFor.${system}) rufzxp walls;
         });
 
       # The default package for 'nix build'. This makes sense if the
