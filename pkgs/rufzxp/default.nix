@@ -30,7 +30,7 @@ let
       "-V";
 
   script = writeShellScriptBin pname ''
-    export WINEARCH="win32"
+    export WINEARCH="win64"
     export WINEPREFIX="${location}"
     PATH=${wine}/bin:${winetricks}/bin:${xvfb-run}/bin:$PATH
     USER="$(whoami)"
